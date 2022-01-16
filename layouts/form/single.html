@@ -21,7 +21,7 @@
       <label for="{{.name}}">{{ .name }}</label>
       <input type="number" name="{{ .name }}" required="{{ .required }}" />
       {{else if eq .type "radio"}}
-      <label>{{ .name }}</label>
+      <label for="{{.name}}">{{ .name }}</label>
       {{range .options}}
       <label for="{{.name}}">{{ .name }}</label>
       <input
@@ -30,7 +30,7 @@
         name='{{ $data.Get "element_name" }}'
       />
       {{end}} {{else if eq .type "checkbox"}}
-      <label>{{ .name }}</label>
+      <label for="{{.name}}">{{ .name }}</label>
       {{range .options}}
       <label for="{{.name}}">{{ .name }}</label>
       <input
