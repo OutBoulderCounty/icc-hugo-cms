@@ -25,14 +25,22 @@
       {{range .options}}
       <label
         >{{ .name }}
-        <input type="radio" name='{{ $data.Get "element_name" }}' />
+        <input
+          type="radio"
+          name='{{ $data.Get "element_name" }}'
+          value="{{ .name }}"
+        />
       </label>
       {{end}} {{else if eq .type "checkbox"}}
       <label for="{{.name}}">{{ .name }}</label>
       {{range .options}}
       <label>
         {{ .name }}
-        <input type="checkbox" name='{{ $data.Get "element_name" }}' />
+        <input
+          type="checkbox"
+          name='{{ $data.Get "element_name" }}'
+          value="{{ .name }}"
+        />
       </label>
       {{end}} {{end}} {{end}}
       <button type="submit">Submit</button>
