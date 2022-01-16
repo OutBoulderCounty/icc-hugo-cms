@@ -23,21 +23,17 @@
       {{else if eq .type "radio"}}
       <label for="{{.name}}">{{ .name }}</label>
       {{range .options}}
-      <label for="{{.name}}">{{ .name }}</label>
-      <input
-        type="radio"
-        id="{{ .name }}"
-        name='{{ $data.Get "element_name" }}'
-      />
+      <label
+        >{{ .name }}
+        <input type="radio" name='{{ $data.Get "element_name" }}' />
+      </label>
       {{end}} {{else if eq .type "checkbox"}}
       <label for="{{.name}}">{{ .name }}</label>
       {{range .options}}
-      <label for="{{.name}}">{{ .name }}</label>
-      <input
-        type="checkbox"
-        id="{{ .name }}"
-        name='{{ $data.Get "element_name" }}[]'
-      />
+      <label>
+        {{ .name }}
+        <input type="checkbox" name='{{ $data.Get "element_name" }}' />
+      </label>
       {{end}} {{end}} {{end}}
       <button type="submit">Submit</button>
     </form>
