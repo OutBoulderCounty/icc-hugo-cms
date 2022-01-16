@@ -38,7 +38,7 @@
         {{ .name }}
         <input
           type="checkbox"
-          name='{{ $data.Get "element_name" }}'
+          name='{{ $data.Get "element_name" }}[]'
           value="{{ .name }}"
         />
       </label>
