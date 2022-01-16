@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{ .Params.name }}</title>
+  </head>
+  <body>
+    <h1>{{ .Params.name}}</h1>
+    <p>Required: {{ .Params.required }}</p>
+    <form name="{{.Params.name}}" netlify>
+      {{range .Params.elements}} {{ $data := newScratch }} {{ $data.Set
+      "element_name" .name }} {{if eq .type "text"}}
+      <label for="{{.name}}">{{ .name }}</label>
+      <input type="text" name="{{ .name }}" required="{{ .required }}" />
+      {{else if eq .type "textarea"}}
+      <label>{{ .name }}</label>
+      <textarea name="{{ .name }}" required="{{ .required }}"></textarea>
+      {{else if eq .type "number"}}
+      <label for="{{.name}}">{{ .name }}</label>
+      <input type="number" name="{{ .name }}" required="{{ .required }}" />
+      {{else if eq .type "radio"}}
+      <label>{{ .name }}</label>
+      {{range .options}}
+      <label for="{{.name}}">{{ .name }}</label>
+      <input
+        type="radio"
+        id="{{ .name }}"
+        name='{{ $data.Get "element_name" }}'
+      />
+      {{end}} {{else if eq .type "checkbox"}}
+      <label>{{ .name }}</label>
+      {{range .options}}
+      <label for="{{.name}}">{{ .name }}</label>
+      <input
+        type="checkbox"
+        id="{{ .name }}"
+        name='{{ $data.Get "element_name" }}'
+      />
+      {{end}} {{end}} {{end}}
+    </form>
+  </body>
+</html>

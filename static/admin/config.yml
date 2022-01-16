@@ -1,7 +1,9 @@
+# local_backend: true # Uncomment to use the local filesystem instead of the remote backend
 backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
 media_folder: static/img
+publish_mode: editorial_workflow
 public_folder: /img
 collections:
   - name: "blog"
@@ -16,3 +18,51 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
+  - name: form
+    label: Form
+    folder: content/form
+    create: true
+    identifier_field: name
+    slug: "{{slug}}"
+    fields:
+      - label: "Name"
+        name: "name"
+        widget: "string"
+      - label: "Required"
+        name: "required"
+        widget: "boolean"
+        required: false
+      - label: Elements
+        name: "elements"
+        widget: "list"
+        fields:
+          - label: "Name"
+            name: "name"
+            widget: "string"
+          - label: "Type"
+            name: "type"
+            widget: "select"
+            options:
+              - label: Text
+                value: text
+              - label: Text Area
+                value: textarea
+              - label: Number
+                value: number
+              - label: Radio Buttons
+                value: radio
+              - label: Checkboxes
+                value: checkbox
+          - label: "Required"
+            name: "required"
+            widget: "boolean"
+            required: false
+          - label: "Options"
+            name: "options"
+            widget: "list"
+            hint: "Enter options for radio buttons and checkboxes"
+            required: false
+            fields:
+              - label: "Name"
+                name: "name"
+                widget: "string"

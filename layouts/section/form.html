@@ -12,7 +12,7 @@
     <ul>
       {{range (where .Pages "Section" "form")}}
       <li>
-        <a href="{{.RelPermalink}}">{{.Name}}</a> |
+        <a href="{{.RelPermalink}}">{{.Params.name}}</a> |
         <p>{{.Params.required}}</p>
       </li>
       {{end}}
